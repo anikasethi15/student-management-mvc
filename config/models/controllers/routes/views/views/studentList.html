@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Students</title>
+  </head>
+  <body>
+    <h1>Student List</h1>
+    <ul id="studentList"></ul>
+
+    <script>
+      fetch("/api/students")
+        .then((res) => res.json())
+        .then((data) => {
+          const list = document.getElementById("studentList");
+          data.forEach((s) => {
+            const li = document.createElement("li");
+            li.textContent = `${s.name} (${s.course})`;
+            list.appendChild(li);
+          });
+        });
+    </script>
+  </body>
+</html>
